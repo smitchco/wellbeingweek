@@ -1,0 +1,198 @@
+/*
+Theme Name: WBIL Theme
+Description: Wellbeing week in law theme
+Author: Matt Smith
+Author URI: https://smithmix.com
+Version: 1.0.0
+*/
+
+.callout--wrapper {
+	padding: 30px;
+  	margin-top: 25px;
+    background: linear-gradient(90deg, #D9EFFA 7.48%, #FFFFFF 90.71%);
+    border-radius: 30px;
+    border: 3px solid #FFFFFF;
+    box-shadow: 0px 0px 50px rgb(0 0 0 / 25%);
+}
+
+.callout--wrapper::before {
+	content: '';
+	background-image: url("data:image/svg+xml,%3Csvg width='22' height='18' viewBox='0 0 22 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.5902 7.7187C16.994 7.35166 16.994 6.72768 16.5902 6.36064L10.1302 0.781549C9.57965 0.30439 8.69874 0.70814 8.69874 1.47893V4.48871C3.92715 4.89246 0.476929 6.39734 0.476929 11.2423C0.476929 13.4813 1.90841 15.7203 3.5234 16.8948C4.00056 17.2619 4.73465 16.7847 4.55113 16.1974C3.11965 11.6828 4.69795 9.99438 8.69874 9.51723V12.6004C8.69874 13.3712 9.57965 13.7749 10.1302 13.2978L16.5902 7.7187ZM21.2884 6.36064L14.8284 0.781549C14.2778 0.30439 13.3969 0.70814 13.3969 1.47893V2.0295L17.361 5.47973C17.8015 5.84677 18.0951 6.43405 18.0951 7.02132V7.05802C18.0951 7.64529 17.8015 8.23257 17.361 8.59961L13.3969 12.0498V12.6004C13.3969 13.3712 14.2778 13.7749 14.8284 13.2978L21.2884 7.7187C21.6921 7.35166 21.6921 6.72768 21.2884 6.36064Z' fill='white'/%3E%3C/svg%3E");
+	border-radius: 100%;
+	width: 65px;
+	height: 65px;
+	background-position: center;
+	background-color: #F7941F;
+  	display: block;
+    background-repeat: no-repeat;
+  	margin: -65px auto 20px;  
+}
+
+.callout--wrapper a {
+	color: #212529!important; 
+  	text-decoration: underline!important;
+}
+
+.callout--wrapper .btn {
+	color: #FFFFFF!important; 
+  	text-decoration: none!important;
+}
+
+.callout--wrapper h4 {
+	margin-bottom: 20px;
+}
+
+.callout--wrapper h4 span {
+	color: #212529!important; 
+}
+
+.edd-submit {
+    line-height: 100%!important;
+    font-weight: bold!important;
+    font-size: 16px!important;
+    border-radius: 4px!important;
+    padding-top: 15px!important;
+    padding-bottom: 15px!important;
+    border: none!important;
+    font-size: 15px!important;
+    padding-left: 40px;
+    padding-right: 40px;
+    background: #19A563!important;
+  }
+  
+  
+  .main-nav>li {
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .menu-item a {
+    margin: 3px!important;
+  }
+  
+  .home .page-title > .wf-wrap, .home #fancy-header > .wf-wrap {
+      display: none!important;
+  }
+  
+  ul#primary-menu .menu-text {
+      font-weight: 100!important;
+      text-transform: none;
+      color: #FFFFFF;
+      font-size: 1rem!important; 
+  }
+  ul#primary-menu ul.sub-nav .menu-text { 
+    color: #333333; 
+}
+  
+  ul#primary-menu .menu-item-5870 > a, ul.main-nav .menu-item-5870 > a {
+    background: #19A563;
+    font-size: 15px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold!important; 
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  
+  ul#primary-menu .menu-item-5870 > a  .menu-text, ul.main-nav .menu-item-5870 > a .menu-text{
+    font-weight: bold!important;
+  }
+  ul#primary-menu .menu-item-5870 > a  .menu-text::after, ul.main-nav .menu-item-5870 > a .menu-text::after{
+    /* content: "\f078"; */
+    font-family: "Font Awesome 5 Pro";
+    margin-left: 10px;
+    font-weight: 100;
+    display: inline;
+    position: static;
+  
+  }
+  
+  .masthead:not(.side-header):not(.mixed-header) .header-bar, .header-space {
+    min-height: 0!important;
+  }
+  
+  #phantom .ph-wrap {
+    min-height: 0!important;
+  }
+  
+  a.same-logo {
+    max-width: 320px!important;
+  }
+  
+  body .logo-box img {
+    max-width: 160px!important;
+  }
+  
+  body .main-nav > li > a .menu-text, body .wpb_wrapper span.s1
+  
+  .masthead .menu-box {
+      font-weight: 100!important;
+      text-transform: none;
+      font-size: .75rem!important;
+  }
+  
+  
+  .section--border--before {
+    position: relative; 
+  }
+  
+  .masthead {
+    background: #20262A!important;
+  }
+  
+  .wp-caption-text,
+  .sticky,
+  .gallery-caption,
+  .bypostauthor,
+  .main-page {}
+  
+  body .main-nav > li > a {
+    padding: 10px; 
+  }
+  
+  body .main-nav > li > a .menu-text, body .wpb_wrapper span.s1 {
+    font-size: 16px!important;
+  }
+  
+  body #phantom .logo-box {
+    padding: 0; 
+  }
+  
+  body .logo-box img {
+      width: 200px;
+      height: auto;
+  }
+  
+  .main-nav {
+  margin-bottom: 0!important;
+  }
+  
+  
+  .page-id-3238 .fancy-header, .page-id-3238 .page-title, .page-id-2868 .page-title, .page-id-2868 .fancy-header{
+    background: url(https://lawyerwellbeing.net/wp-content/uploads/2021/04/bg-wellbeing.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+  }
+  
+  .page-id-3238 .fancy-header-overlay, .page-id-3238 .fancy-title-head, .page-id-2868 .fancy-header-overlay, .page-id-2868 .fancy-title-head{
+    display: none; 
+  }
+  
+
+  .masthead .soc-ico.custom-bg a:before, .masthead .soc-ico.accent-bg a:before, .dt-mobile-header .soc-ico.custom-bg a:before, .dt-mobile-header .soc-ico.accent-bg a:before {
+    background: #FFFFFF!important;
+  }
+
+  .masthead .mini-widgets .soc-ico a:not(:hover) .soc-font-icon, .masthead .mobile-mini-widgets .soc-ico a:not(:hover) .soc-font-icon, .dt-mobile-header .soc-ico a:not(:hover) .soc-font-icon {
+    color: #000000!important;
+  }
+
+  .top-header .hover-bg-decoration > li:not(.act) > a:hover, .top-header .hover-bg-decoration > li.dt-hovered:not(.act) > a {
+        background: #000000!important;
+  }
+
+  .sticky-on .main-nav > li.act:not(.wpml-ls-item) > a .menu-text, #phantom .main-nav > li.act:not(.wpml-ls-item) > a .menu-text, .sticky-on .main-nav > li.act:not(.wpml-ls-item) > a .subtitle-text, #phantom .main-nav > li.act:not(.wpml-ls-item) > a .subtitle-text, .sticky-on .main-nav > li:not(.wpml-ls-item) > a .menu-text, #phantom .main-nav > li:not(.wpml-ls-item) > a .menu-text {
+    color: #FFFFFF;
+  }
