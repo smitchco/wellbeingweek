@@ -11,46 +11,36 @@
 <div class="wbil-sidebar p-3 pt-5 flex-column d-none d-md-flex" data-sidebar>
   <div class="sidebar__nav">
     <ul class="mb-md-5 pb-md-5">
-      <li>
-        <a href="<?php echo get_permalink(8370); ?>" <?php echo is_page(8370) ? 'class="active"' : ''; ?>>
-          Welcome!
-        </a>
-      </li>
-      <li>
-        <a href="<?php echo get_permalink(8371); ?>" <?php echo is_page(8371) ? 'class="active"' : ''; ?>>
-          About Well-Being Week
-        </a>
-      </li>
-      <li>
-        <a href="<?php echo get_permalink(8372); ?>" <?php echo is_page(8372) ? 'class="active"' : ''; ?>>
-          Daily Schedule
-        </a>
-      </li>
-      <li>
-        <a href="<?php echo get_permalink(8026); ?>" <?php echo is_page(8026) ? 'class="active"' : ''; ?>>
-          Special Event: Free Webinar
-        </a>
-      </li>
-      <li>
-        <a href="<?php echo get_permalink(8373); ?>" <?php echo is_page(8373) ? 'class="active"' : ''; ?>>
-          Participation Guides &amp; Resources
-        </a>
-      </li>
-      <li>
-        <a href="<?php echo get_permalink(8374); ?>" <?php echo is_page(8374) ? 'class="active"' : ''; ?>>
-          Well-Being Guides &amp; Resources
-        </a>
-      </li>
-      <li>
-        <a href="<?php echo get_permalink(7940); ?>" <?php echo is_page(7940) ? 'class="active"' : ''; ?>>
-          Community Photo Wall
-        </a>
-      </li> 
-      <li>
-        <a href="<?php echo get_permalink(8375); ?>" class="sidebar__btn mt-3">
-          Register Now
-        </a>
-      </li>
+      <?php 
+
+      $post_parent_id = $post->ID;
+
+      if ( is_page() && $post->post_parent ) { //subpage
+        $post_parent_id = wp_get_post_parent_id(); 
+      }
+
+      $args = array(
+        'post_type'      => 'page',
+        'posts_per_page' => -1,
+        'post_parent'    => $post_parent_id,
+        'order'          => 'ASC',
+        'orderby'        => 'menu_order'
+      );
+  
+      $nav_query = new WP_Query( $args );
+      
+      $active_class = is_page($post_parent_id) ? 'class="active"' : '';
+      echo '<li><a href="' . get_permalink($post_parent_id) . '" ' . $active_class . '>Welcome!</a></li>';
+
+      while($nav_query->have_posts()): $nav_query->the_post(); 
+
+        $active_class = is_page($post->ID) ? 'class="active"' : '';
+
+        echo '<li><a href="' . get_permalink($post->ID) . '" ' . $active_class . '>' . get_the_title($post->ID). '</a></li>';
+      endwhile; 
+      wp_reset_postdata(); 
+?>
+
     </ul>
 
     <div class="mt-md-5 pt-md-5">

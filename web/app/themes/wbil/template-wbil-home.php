@@ -4,8 +4,13 @@
 	get_template_part( 'template-parts/wbil', 'hero');
 
 	while (have_posts()) { the_post();
-		$page_id = $post->ID; 
+		$conf_id = $post->ID; 
 	}
+
+	if ( is_page() && $post->post_parent ) { //subpage
+		$conf_id = wp_get_post_parent_id(); 
+	}
+
 ?>
  
 <main class="main__wbil">
@@ -34,7 +39,7 @@
 							<div class="mb-5 mt-2">
 								<h5 class="p-0 m-0">Jump to:</h5>
 								<p class="m-0 p-0">
-									<a href="<?php echo $conf_id == 7162 ? get_permalink(7856) : get_permalink(8371); ?>" class="mr-2">About WWIL</a> | 
+									<a href="<?php echo $conf_id == 7162 ? get_permalink(8745) : get_permalink(8745); ?>" class="mr-2">About WWIL</a> | 
 									<a href="<?php echo $conf_id == 7162 ?  get_permalink(7254) : get_permalink(8372); ?>" class="mx-2">Daily Schedule</a> | 
 									<a href="<?php echo $conf_id == 7162 ? get_permalink(7250) : get_permalink(8373); ?>" class="ml-2">Participation Guides & Resources</a></p>
 							</div>
@@ -158,7 +163,7 @@
 		<div class="tab-pane fade active show" id="sponsors" role="tabpanel" aria-labelledby="sponsors-tab">
 			<section class="pb-5"> 
 				<div class="container container-fluid mb-4 pb-4">
-					<?php get_template_part( 'template-parts/section', 'sponsors', ['page_id' => $page_id]); ?>
+					<?php get_template_part( 'template-parts/section', 'sponsors', ['page_id' => $conf_id]); ?>
 				</div>
 			</section>
 		</div>

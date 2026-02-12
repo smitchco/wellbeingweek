@@ -9,8 +9,6 @@
  */
 
 	get_header();
-
-	get_template_part( 'template-parts/wbil', 'head'); 
 	get_template_part( 'template-parts/wbil', 'hero');
 
 	function clean($string) {
@@ -19,61 +17,30 @@
 		return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
  }
 
+
+ 	while (have_posts()) { the_post();
+		$conf_id = $post->ID; 
+	}
+
+	if ( is_page() && $post->post_parent ) { //subpage
+		$conf_id = wp_get_post_parent_id(); 
+	}
+
+	$countdown_timer = get_field('countdown_timer', $conf_id) ? get_field('countdown_timer', $conf_id) : null; 
+
 ?>
 
 <script>
 
 	<?php 
 		
-		$date = date("Y-m-d");
-
- 		//echo 'var testdate = ' . $date; 
-
-		switch ( $date ) {
-			//2024
-			case "2024-05-06":
-				$active_anchor = 'mondaymay62024';
-			break;
-			case "2024-05-07":
-				$active_anchor = 'tuesdaymay72024';
-			break;
-			case "2024-05-08":
-				$active_anchor = 'wednesdaymay82024';
-			break;
-			case "2024-05-09":
-				$active_anchor = 'thursdaymay92024';
-			break;
-			case "2024-05-10":
-				$active_anchor = 'fridaymay102024';
-			break;
-			case "2024-05-06":
-				$active_anchor = 'mondaymay62024';
-			break;
-			//2025
-			case "2025-05-05":
-				$active_anchor = 'mondaymay52025';
-			break;
-			case "2025-05-06":
-				$active_anchor = 'tuesdaymay62025';
-			break;
-			case "2025-05-07":
-				$active_anchor = 'wednesdaymay72025';
-			break;
-			case "2025-05-08":
-				$active_anchor = 'thursdaymay82025';
-			break;
-			case "2025-05-09":
-				$active_anchor = 'fridaymay92025';
-			break;
-			default: 
-				$active_anchor = "start-here";
-		}
-
-		$query_string = $_REQUEST["day"]; 
-
-		if($query_string) {
-			$active_anchor = $query_string;
-		}
+		$active_anchor = "start-here";
+		
+		if(isset($_REQUEST["day"])):
+			$active_anchor = $_REQUEST["day"];
+		elseif(date("Y-m-d") == date('Y-m-d',strtotime($countdown_timer))):
+			$active_anchor = strtolower(date('l',strtotime($countdown_timer)));
+		endif; 
 
 	?>
 
@@ -152,7 +119,7 @@
 					$section_title = preg_replace('/\s*/', '', $section_title);
 					$section_title = strtolower($section_title);
 
-					$section_title  = clean($section_title);
+					$section_title  = strtok($section_title, ":");
 
 				if($i == 1) { ?>
 					<div class="col-12 col-lg pr-1" style="height: 80px;">

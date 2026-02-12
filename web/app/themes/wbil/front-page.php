@@ -1,12 +1,17 @@
 <?php 
-	$conf_id = 8744; // 2026 parent
+
+	while (have_posts()) { the_post();
+		$conf_id = $post->ID; 
+	}
+
+	if ( is_page() && $post->post_parent ) { //subpage
+		$conf_id = wp_get_post_parent_id(); 
+	}
 
 	get_header(); 
 	get_template_part( 'template-parts/wbil', 'hero');
 
-	while (have_posts()) { the_post();
-		$page_id = $post->ID; 
-	}
+
 ?>
  
 <main class="main__wbil">
@@ -62,61 +67,58 @@
 							<p>Each day focuses on a distinct dimension of holistic well-being for legal professionals:</p>
 
 							<div class="row no-gutters">
+								<?php
+									$args = array(
+										'post_type'      => 'page',
+										'posts_per_page' => 1,
+										'post_parent'    => $conf_id,
+										'name' => 'daily-schedule'
+									);
+							
+									$day_query = new WP_Query( $args );
+
+									while($day_query->have_posts()): $day_query->the_post();
+										$schedule_id = $post->ID;
+									endwhile;
+									wp_reset_postdata(); 
+
+								?>
+
 								<div class="col pr-1">
 									<div class="card__wbil card--sm card--orange my-3">
 										<p class="card__overline text-uppercase mb-0 text-black">Monday</p>
 										<p class="card__title card__title--sm text-orange mb-0">Stay Strong</p>	
-										<?php if ($conf_id == 7162) { ?>
-											<a href="<?php echo get_permalink(7254); ?>?day=mondaymay52025" 
+											<a href="<?php echo get_permalink($schedule_id); ?>?day=monday" 
 											 class="card__link card__link--sm card__link--orange"></a>
-										<?php } else if ($conf_id == 8370) { ?>
-											<a href="<?php echo get_permalink(8372); ?>?day=mondaymay62024" 
-											class="card__link card__link--sm card__link--orange"></a>
-										<?php } ?>
 									</div>
 								</div>
+
 								<div class="col px-1">
 									<div class="card__wbil card--sm card--blue my-3">
 										<p class="card__overline text-uppercase mb-0 text-black">Tuesday</p>
 										<p class="card__title card__title--sm text-blue mb-0">Align</p>
-										<?php if ($conf_id == 7162) { ?>
-											<a href="<?php echo get_permalink(7254); ?>?day=tuesdaymay62025" class="card__link card__link--sm card__link--blue"></a>
-										<?php } else if ($conf_id == 8370) { ?>
-											<a href="<?php echo get_permalink(8372); ?>?day=tuesdaymay72024" class="card__link card__link--sm card__link--blue"></a>
-										<?php } ?>
+											<a href="<?php echo get_permalink($schedule_id); ?>?day=tuesday" class="card__link card__link--sm card__link--blue"></a>
 									</div>
 								</div>
 								<div class="col px-1">
 									<div class="card__wbil card--sm card--magenta my-3">
 										<p class="card__overline text-uppercase mb-0 text-black">Wednesday</p>
 										<p class="card__title card__title--sm text-magenta mb-0">Engage & Grow</p>
-										<?php if ($conf_id == 7162) { ?>
-										<a href="<?php echo get_permalink(7254); ?>?day=wednesdaymay72025" class="card__link card__link--sm card__link--magenta"></a>
-										<?php } else if ($conf_id == 8370) { ?>
-											<a href="<?php echo get_permalink(8372); ?>?day=wednesdaymay82024" class="card__link card__link--sm card__link--magenta"></a>
-										<?php } ?>
+										<a href="<?php echo get_permalink($schedule_id); ?>?day=wednesday" class="card__link card__link--sm card__link--magenta"></a>
 									</div>
 								</div>
 								<div class="col px-1">
 									<div class="card__wbil card--sm card--purple my-3">
 										<p class="card__overline text-uppercase mb-0 text-black">Thursday</p>
 										<p class="card__title card__title--sm text-purple mb-0">Connect</p>	
-										<?php if ($conf_id == 7162) { ?>
-										<a href="<?php echo get_permalink(7254); ?>?day=thursdaymay82025" class="card__link card__link--sm card__link--purple"></a>
-										<?php } else if ($conf_id == 8370) { ?>
-											<a href="<?php echo get_permalink(8372); ?>?day=thursdaymay92024" class="card__link card__link--sm card__link--purple"></a>
-										<?php } ?>
+										<a href="<?php echo get_permalink($schedule_id); ?>?day=thursday" class="card__link card__link--sm card__link--purple"></a>
 									</div>
 								</div>
 								<div class="col pl-1">
 									<div class="card__wbil card--sm card--green my-3">
 										<p class="card__overline text-uppercase mb-0 text-black">Friday</p>
 										<p class="card__title card__title--sm text-green mb-0">Feel Well</p>
-										<?php if ($conf_id == 7162) { ?>
-										<a href="<?php echo get_permalink(7254); ?>?day=fridaymay92025" class="card__link card__link--sm card__link--green"></a>
-										<?php } else if ($conf_id == 8370) { ?>
-											<a href="<?php echo get_permalink(8372); ?>?day=fridaymay102024" class="card__link card__link--sm card__link--green"></a>
-										<?php } ?>
+										<a href="<?php echo get_permalink($schedule_id); ?>?day=friday" class="card__link card__link--sm card__link--green"></a>
 									</div>
 								</div>
 							</div>

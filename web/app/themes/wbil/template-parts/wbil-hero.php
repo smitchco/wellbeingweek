@@ -1,10 +1,10 @@
 <?php 
-	$post_id = 8744; // 2026 parent
 
-  if (is_page(8370) || $post->post_parent == 8370) { //2024 CONFERENCE PAGES
-		$post_id = 8370; 
-	} else if (is_page(7162) || $post->post_parent == 7162) { //2025 CONFERENCE PAGES
-		$post_id = 7162; 
+
+	$post_id = $post->ID;
+
+	if ( is_page() && $post->post_parent ) { //subpage
+		$post_id = wp_get_post_parent_id(); 
 	}
 
 	$countdown_timer = get_field('countdown_timer', $post_id) ? get_field('countdown_timer', $post_id) : null; 
